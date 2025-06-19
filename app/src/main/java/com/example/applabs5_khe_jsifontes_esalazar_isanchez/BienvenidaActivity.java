@@ -1,6 +1,9 @@
 package com.example.applabs5_khe_jsifontes_esalazar_isanchez;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,15 +13,27 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class BienvenidaActivity extends AppCompatActivity {
 
+    TextView textNombre, textCedula, textGrupo;
+    Button btnCrearUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_bienvenida);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        textNombre = findViewById(R.id.textNombre);
+        textCedula = findViewById(R.id.textCedula);
+        textGrupo = findViewById(R.id.textGrupo);
+        btnCrearUsuario = findViewById(R.id.btnCrearUsuario);
+
+        Intent intent = getIntent();
+        textNombre.setText("Nombre: " + intent.getStringExtra("nombre"));
+        textCedula.setText("Cédula: " + intent.getStringExtra("cedula"));
+        textGrupo.setText("Grupo: " + intent.getStringExtra("grupo"));
+
+        btnCrearUsuario.setOnClickListener(v -> {
+            startActivity(new Intent(this, CrearUsuarioActivity.class));
         });
+
     }
 }
