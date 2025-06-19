@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:padding="16dp"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView android:id="@+id/textNombre" android:text="Nombre: ..."
+        android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+    <TextView android:id="@+id/textCedula" android:text="Cédula: ..."
+        android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+    <TextView android:id="@+id/textGrupo" android:text="Grupo: ..."
+        android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnCrearUsuario"
+        android:text="Crear Usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
