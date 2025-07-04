@@ -27,11 +27,17 @@ public class LoginActivity extends AppCompatActivity {
             String correo = editCorreo.getText().toString();
             String clave = editPassword.getText().toString();
 
+            if (correo.isEmpty() || clave.isEmpty()) {
+                Toast.makeText(this, "Por favor ingrese correo y contraseña", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+
             if (correo.equals("admin@ejemplo.com") && clave.equals("1234")) {
                 Intent intent = new Intent(this, BienvenidaActivity.class);
-                intent.putExtra("nombre", "Tu Nombre");
+                intent.putExtra("nombre", "Admin");
                 intent.putExtra("cedula", "12345678");
-                intent.putExtra("grupo", "1IL123");
+                intent.putExtra("grupo", "1GS131");
                 startActivity(intent);
             } else {
                 Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();

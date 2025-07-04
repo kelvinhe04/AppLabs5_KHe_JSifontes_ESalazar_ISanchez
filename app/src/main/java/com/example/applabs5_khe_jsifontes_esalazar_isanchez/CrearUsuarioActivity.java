@@ -28,17 +28,31 @@ public class CrearUsuarioActivity extends AppCompatActivity {
         btnGuardarUsuario = findViewById(R.id.btnGuardarUsuario);
 
         btnGuardarUsuario.setOnClickListener(v -> {
+
+            // Validar que los campos no estén vacíos
             if (editNombre.getText().toString().isEmpty() ||
                     editCedula.getText().toString().isEmpty() ||
                     editCorreoNuevo.getText().toString().isEmpty() ||
                     editPasswordNuevo.getText().toString().isEmpty()) {
 
                 Toast.makeText(this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Usuario guardado correctamente", Toast.LENGTH_SHORT).show();
-                finish(); // Regresar
+                return;  // Evita continuar si hay campos vacíos
             }
+
+            // Validar el formato del correo
+            String correo = editCorreoNuevo.getText().toString();
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+                Toast.makeText(this, "Correo electrónico no válido", Toast.LENGTH_SHORT).show();
+                return;  // Evita continuar si el correo no es válido
+            }
+
+
+            Toast.makeText(this, "Usuario guardado correctamente", Toast.LENGTH_SHORT).show();
+
+
+            finish(); // Regresar
         });
+
 
     }
 }
